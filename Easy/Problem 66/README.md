@@ -43,6 +43,50 @@ Thus, the result should be [1,0].
 
 <hr style="border: none; height: 1px; background-color: #ddd; margin: 25px 0;">
 
-<p align="center" style="font-size:14px; color:#555;">
-Created by <b style="color:#1a73e8;">Kuldeep Chudasama</b> 💻
-</p>
+<h2 style="color:#2c3e50;">💡 Java Solution</h2>
+
+```java
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+class Solution {
+    public int[] plusOne(int[] digits) {
+        // ✅ Convert array of digits → String
+        String str = Arrays.stream(digits)
+                           .mapToObj(String::valueOf)
+                           .collect(Collectors.joining());
+
+        // ✅ Convert to BigInteger
+        BigInteger bignum = new BigInteger(str);
+
+        // ✅ Add 1
+        BigInteger bignum2 = bignum.add(BigInteger.ONE);
+
+        // ✅ Convert back to string
+        String numString = bignum2.toString();
+
+        // ✅ Convert string → int[]
+        int[] digitArray = new int[numString.length()];
+        for (int i = 0; i < numString.length(); i++) {
+            digitArray[i] = Character.getNumericValue(numString.charAt(i));
+        }
+
+        return digitArray;
+    }
+}
+```
+
+<h3 style="color:#1a73e8;">🧠 Explanation (Java)</h3> <ul style="font-size:15px; line-height:1.6;"> <li><b>Step 1:</b> Convert the integer array <code>digits</code> into a string (e.g., [1,2,3] → "123").</li> <li><b>Step 2:</b> Use <code>BigInteger</code> to handle very large numbers without overflow.</li> <li><b>Step 3:</b> Add 1 to the number using <code>bignum.add(BigInteger.ONE)</code>.</li> <li><b>Step 4:</b> Convert the result back to a string (e.g., "124").</li> <li><b>Step 5:</b> Convert each character of the string into an integer and store it in a new array.</li> </ul> <hr style="border: none; height: 1px; background-color: #ddd; margin: 25px 0;"> <h2 style="color:#2c3e50;">⚡ JavaScript Solution</h2>
+/**
+ * @param {number[]} digits
+ * @return {number[]}
+ */
+var plusOne = function(digits) {
+  let str = digits.join("");         // Convert array to string
+  let number1 = BigInt(str);         // Convert string to BigInt
+  let number2 = number1 + 1n;        // Add 1 using BigInt arithmetic
+  let result = Array.from(String(number2), Number); // Convert back to array
+  return result;
+};
+<h3 style="color:#1a73e8;">🧠 Explanation (JavaScript)</h3> <ul style="font-size:15px; line-height:1.6;"> <li><b>Step 1:</b> Join the digits into a single string (e.g., [1,2,3] → "123").</li> <li><b>Step 2:</b> Convert the string into a <code>BigInt</code> for handling large numbers.</li> <li><b>Step 3:</b> Add 1 using <code>+ 1n</code> (the <code>n</code> denotes a BigInt literal).</li> <li><b>Step 4:</b> Convert the result back into a string, then use <code>Array.from()</code> to transform each digit back into a number.</li> </ul> <hr style="border: none; height: 1px; background-color: #ddd; margin: 25px 0;"> <p align="center" style="font-size:14px; color:#555;"> Created by <b style="color:#1a73e8;">Kuldeep Chudasama</b> 💻 </p> ```
