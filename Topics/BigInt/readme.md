@@ -42,6 +42,39 @@ Enter a big integer: 999999999999999999999999999
 You entered: 999999999999999999999999999
 </code></pre>
 
+<h1>BigInteger Arithmetic Operations in Java</h1>
+
+<pre><code>
+import java.math.BigInteger;
+
+public class Main {
+    public static void main(String[] args) {
+
+        BigInteger a = new BigInteger("12333333333");
+        BigInteger b = new BigInteger("2222222222");
+
+        BigInteger sum = a.add(b);           // Addition
+        BigInteger diff = a.subtract(b);     // Subtraction
+        BigInteger product = a.multiply(b);  // Multiplication
+        BigInteger quotient = a.divide(b);   // Division
+
+        System.out.println("Addition: " + sum);
+        System.out.println("Subtraction: " + diff);
+        System.out.println("Multiplication: " + product);
+        System.out.println("Division: " + quotient);
+    }
+}
+</code></pre>
+
+<h2>Output:</h2>
+<pre><code>
+Addition: 14555555555
+Subtraction: 10111111111
+Multiplication: 27407358021481481526
+Division: 5
+</code></pre>
+
+
 <p>
 <b>Tip:</b> You can also perform operations using methods like 
 <code>add()</code>, <code>subtract()</code>, <code>multiply()</code>, and <code>divide()</code>.
